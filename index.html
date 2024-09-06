@@ -45,6 +45,12 @@
         .ball:nth-child(4) { background-color: yellow; color: black; }
         .ball:nth-child(5) { background-color: purple; }
         .ball:nth-child(6) { background-color: orange; }
+
+        .message {
+            margin-top: 60px; /* 세 줄 정도의 간격 */
+            font-size: 18px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +64,9 @@
         <div class="ball" id="ball5"></div>
         <div class="ball" id="ball6"></div>
     </div>
+
+    <!-- 메시지 추가 -->
+    <div class="message">당신의 행운을 기원합니다!</div>
 
     <script>
         function generateNumbers() {
