@@ -48,4 +48,101 @@
             font-weight: bold;
             font-size: 20px;
             margin: 0 5px;
-            background-color
+            background-color: gray; /* 초기 배경색 설정 */
+        }
+
+        .ball:nth-child(1) { background-color: red; }
+        .ball:nth-child(2) { background-color: blue; }
+        .ball:nth-child(3) { background-color: green; }
+        .ball:nth-child(4) { background-color: yellow; color: black; }
+        .ball:nth-child(5) { background-color: purple; }
+        .ball:nth-child(6) { background-color: orange; }
+
+        .message {
+            margin-top: 40px;
+            font-size: 36px; /* 타이틀과 같은 크기로 설정 */
+            font-weight: bold;
+        }
+
+        .button-container {
+            margin-top: 40px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: yellow;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* 반응형 디자인을 위한 미디어 쿼리 */
+        @media (max-width: 768px) {
+            .title-container, .message {
+                width: 80%; /* 모바일에서 타이틀과 메시지의 너비를 80%로 설정 */
+                font-size: 24px; /* 모바일에서 크기 조절 */
+            }
+
+            #number-display {
+                font-size: 18px; /* 모바일에서 번호 표시 크기 조절 */
+            }
+
+            button {
+                font-size: 16px; /* 모바일에서 버튼 글씨 크기 조절 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title-container">로또 번호 생성기</div>
+    
+    <div class="button-container">
+        <button onclick="generateNumbers()">버튼을 눌러 행운의 번호를 생성하세요</button>
+    </div>
+
+    <!-- Google AdSense 광고 위치 -->
+    <div style="text-align: center; margin-top: 20px;">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-1329683981059011"
+            data-ad-slot="YOUR_AD_SLOT_ID" <!-- 여기에 광고 슬롯 ID를 입력하세요 -->
+            data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div id="balls">
+        <div class="ball" id="ball1"></div>
+        <div class="ball" id="ball2"></div>
+        <div class="ball" id="ball3"></div>
+        <div class="ball" id="ball4"></div>
+        <div class="ball" id="ball5"></div>
+        <div class="ball" id="ball6"></div>
+    </div>
+
+    <div class="message">당신의 행운을 기원합니다!</div>
+
+    <script>
+        function generateNumbers() {
+            const balls = document.querySelectorAll('.ball');
+            const numbers = Array.from({ length: 45 }, (_, i) => i + 1);
+            const selectedNumbers = [];
+
+            while (selectedNumbers.length < 6) {
+                const randomIndex = Math.floor(Math.random() * numbers.length);
+                const selectedNumber = numbers.splice(randomIndex, 1)[0];
+                selectedNumbers.push(selectedNumber);
+            }
+
+            balls.forEach((ball, index) => {
+                setTimeout(() => {
+                    ball.textContent = selectedNumbers[index];
+                }, index * 1000); // 각 공이 1초 간격으로 표시됨
+            });
+        }
+    </script>
+</body>
+</html>
