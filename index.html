@@ -59,6 +59,7 @@
             margin-top: 40px;
             font-size: 36px; /* 타이틀과 같은 크기로 설정 */
             font-weight: bold;
+            text-align: center; /* 텍스트 가운데 정렬 */
         }
 
         .button-container {
@@ -80,6 +81,7 @@
             .title-container, .message {
                 width: 80%; /* 모바일에서 타이틀과 메시지의 너비를 80%로 설정 */
                 font-size: 24px; /* 모바일에서 크기 조절 */
+                margin: 0 auto; /* 모바일에서 중앙 정렬 */
             }
 
             #number-display {
@@ -108,7 +110,7 @@
         <div class="ball" id="ball6"></div>
     </div>
 
-    <div class="message"><center></center>당신의 행운을 기원합니다!</div>center></div>
+    <div class="message">당신의 행운을 기원합니다!</div>
 
     <script>
         function generateNumbers() {
