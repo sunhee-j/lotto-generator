@@ -12,20 +12,26 @@
         }
 
         .title-container {
-            background-color: red; /* 레드 색상 배경 추가 */
-            color: white; /* 텍스트 색상 설정 */
+            background-color: red;
+            color: white;
             padding: 20px;
-            font-size: 36px; /* 글씨 크기 키움 */
+            font-size: 36px;
             font-weight: bold;
-            width: 33%; /* 너비를 전체의 1/3로 설정 */
-            margin: 0 auto; /* 중앙 정렬 */
-            border-radius: 15px; /* 곡선 모서리 추가 */
+            width: 33%;
+            margin: 0 auto;
+            border-radius: 15px;
+        }
+
+        #number-display {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         #balls {
             display: flex;
             justify-content: center;
-            margin-top: 60px; /* 번호와 타이틀 사이 간격을 3줄 정도 추가 */
+            margin-top: 20px;
         }
 
         .ball {
@@ -39,8 +45,7 @@
             font-weight: bold;
             font-size: 20px;
             margin: 0 5px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            background-color: gray; /* 초기 배경색 설정 */
         }
 
         .ball:nth-child(1) { background-color: red; }
@@ -51,13 +56,13 @@
         .ball:nth-child(6) { background-color: orange; }
 
         .message {
-            margin-top: 60px; /* 세 줄 정도의 간격 */
-            font-size: 54px; /* 글씨 크기를 3배로 설정 */
+            margin-top: 40px;
+            font-size: 36px; /* 타이틀과 같은 크기로 설정 */
             font-weight: bold;
         }
 
         .button-container {
-            margin-top: 40px; /* 타이틀과 버튼 사이 간격 추가 */
+            margin-top: 40px;
         }
 
         button {
@@ -65,27 +70,46 @@
             font-size: 18px;
             background-color: yellow;
             border: none;
-            border-radius: 5px; /* 버튼의 모서리도 곡선으로 설정 */
+            border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+        }
+
+        /* 반응형 디자인을 위한 미디어 쿼리 */
+        @media (max-width: 768px) {
+            .title-container, .message {
+                width: 80%; /* 모바일에서 타이틀과 메시지의 너비를 80%로 설정 */
+                font-size: 24px; /* 모바일에서 크기 조절 */
+            }
+
+            #number-display {
+                font-size: 18px; /* 모바일에서 번호 표시 크기 조절 */
+            }
+
+            button {
+                font-size: 16px; /* 모바일에서 버튼 글씨 크기 조절 */
+            }
         }
     </style>
 </head>
 <body>
     <div class="title-container">로또 번호 생성기</div>
+    
     <div class="button-container">
-        <button onclick="generateNumbers()">버튼을 눌러 행운의 번호를 생성하세요</button> <!-- 버튼 텍스트 변경 -->
-    </div>
-    <div id="balls">
-        <div class="ball" id="ball1"></div>
-        <div class="ball" id="ball2"></div>
-        <div class="ball" id="ball3"></div>
-        <div class="ball" id="ball4"></div>
-        <div class="ball" id="ball5"></div>
-        <div class="ball" id="ball6"></div>
+        <button onclick="generateNumbers()">버튼을 눌러 행운의 번호를 생성하세요</button>
     </div>
 
-    <!-- 메시지 추가 -->
+    <div id="number-display"></div> <!-- 번호가 표시될 영역 -->
+
+    <div id="balls">
+        <div class="ball" id="ball1">1</div>
+        <div class="ball" id="ball2">2</div>
+        <div class="ball" id="ball3">3</div>
+        <div class="ball" id="ball4">4</div>
+        <div class="ball" id="ball5">5</div>
+        <div class="ball" id="ball6">6</div>
+    </div>
+
     <div class="message">당신의 행운을 기원합니다!</div>
 
     <script>
@@ -100,12 +124,10 @@
                 selectedNumbers.push(selectedNumber);
             }
 
+            document.getElementById('number-display').textContent = '생성된 번호: ' + selectedNumbers.join(', ');
+
             balls.forEach((ball, index) => {
-                ball.style.opacity = '0'; // 공을 다시 숨김
-                setTimeout(() => {
-                    ball.textContent = selectedNumbers[index];
-                    ball.style.opacity = '1'; // 공을 순서대로 표시
-                }, index * 1000); // 각 공이 1초 간격으로 표시됨
+                ball.textContent = selectedNumbers[index];
             });
         }
     </script>
