@@ -11,12 +11,15 @@
             margin-top: 50px;
         }
 
-        header {
+        .title-container {
             background-color: red; /* 레드 색상 배경 추가 */
             color: white; /* 텍스트 색상 설정 */
             padding: 20px;
             font-size: 36px; /* 글씨 크기 키움 */
             font-weight: bold;
+            width: 33%; /* 너비를 전체의 1/3로 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            border-radius: 15px; /* 곡선 모서리 추가 */
         }
 
         #balls {
@@ -52,11 +55,27 @@
             font-size: 54px; /* 글씨 크기를 3배로 설정 */
             font-weight: bold;
         }
+
+        .button-container {
+            margin-top: 40px; /* 타이틀과 버튼 사이 간격 추가 */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: yellow;
+            border: none;
+            border-radius: 5px; /* 버튼의 모서리도 곡선으로 설정 */
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <header>로또 번호 생성기</header>
-    <button onclick="generateNumbers()">버튼을 눌러 행운의 번호를 생성하세요</button> <!-- 버튼 텍스트 변경 -->
+    <div class="title-container">로또 번호 생성기</div>
+    <div class="button-container">
+        <button onclick="generateNumbers()">버튼을 눌러 행운의 번호를 생성하세요</button> <!-- 버튼 텍스트 변경 -->
+    </div>
     <div id="balls">
         <div class="ball" id="ball1"></div>
         <div class="ball" id="ball2"></div>
