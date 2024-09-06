@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로또 번호 생성기</title>
+    <!-- Google AdSense 광고 코드 추가 -->
+    <script data-ad-client="ca-pub-1329683981059011" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -99,15 +101,25 @@
         <button onclick="generateNumbers()">버튼을 눌러 행운의 번호를 생성하세요</button>
     </div>
 
-    <div id="number-display"></div> <!-- 번호가 표시될 영역 -->
+    <!-- Google AdSense 광고 위치 -->
+    <div style="text-align: center; margin-top: 20px;">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-1329683981059011"
+            data-ad-slot="YOUR_AD_SLOT_ID"
+            data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 
     <div id="balls">
-        <div class="ball" id="ball1">1</div>
-        <div class="ball" id="ball2">2</div>
-        <div class="ball" id="ball3">3</div>
-        <div class="ball" id="ball4">4</div>
-        <div class="ball" id="ball5">5</div>
-        <div class="ball" id="ball6">6</div>
+        <div class="ball" id="ball1"></div>
+        <div class="ball" id="ball2"></div>
+        <div class="ball" id="ball3"></div>
+        <div class="ball" id="ball4"></div>
+        <div class="ball" id="ball5"></div>
+        <div class="ball" id="ball6"></div>
     </div>
 
     <div class="message">당신의 행운을 기원합니다!</div>
@@ -124,10 +136,10 @@
                 selectedNumbers.push(selectedNumber);
             }
 
-            document.getElementById('number-display').textContent = '생성된 번호: ' + selectedNumbers.join(', ');
-
             balls.forEach((ball, index) => {
-                ball.textContent = selectedNumbers[index];
+                setTimeout(() => {
+                    ball.textContent = selectedNumbers[index];
+                }, index * 1000); // 각 공이 1초 간격으로 표시됨
             });
         }
     </script>
